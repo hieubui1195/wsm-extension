@@ -1,0 +1,29 @@
+{
+    "name": "WSM Extension",
+    "version": "0.0.1",
+    "manifest_version": 2,
+    "description": "Auto pass cores value",
+    "content_scripts": [
+        {
+            "matches": [
+                "https://wsm.framgia.vn/vi",
+                "https://wsm.sun-asterisk.vn/vi"
+            ],
+            "js": ["axios.js", "login.js"]
+        },
+        {
+            "matches": [
+                "https://wsm.framgia.vn/*",
+                "https://wsm.sun-asterisk.vn/*"
+            ],
+            "js": ["remove-register.js"]
+        }
+    ],
+    "browser_action": {
+    "default_title": "WSM Extension"
+    },
+    "permissions": [
+        "https://wsm.framgia.vn/*",
+        "https://wsm.sun-asterisk.vn/*"
+    ]
+}
