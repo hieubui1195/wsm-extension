@@ -6,7 +6,13 @@
     "content_scripts": [
         {
             "matches": [
+                "https://wsm.framgia.vn/",
+                "https://wsm.framgia.vn/en",
+                "https://wsm.framgia.vn/ja",
                 "https://wsm.framgia.vn/vi",
+                "https://wsm.sun-asterisk.vn/",
+                "https://wsm.sun-asterisk.vn/en",
+                "https://wsm.sun-asterisk.vn/ja",
                 "https://wsm.sun-asterisk.vn/vi"
             ],
             "js": ["axios.js", "login.js"]
