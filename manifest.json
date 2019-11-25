@@ -10,10 +10,18 @@
                 "https://wsm.framgia.vn/en",
                 "https://wsm.framgia.vn/ja",
                 "https://wsm.framgia.vn/vi",
+                "https://wsm.framgia.vn/users/sign_in",
+                "https://wsm.framgia.vn/en/users/sign_in",
+                "https://wsm.framgia.vn/ja/users/sign_in",
+                "https://wsm.framgia.vn/vi/users/sign_in",
                 "https://wsm.sun-asterisk.vn/",
                 "https://wsm.sun-asterisk.vn/en",
                 "https://wsm.sun-asterisk.vn/ja",
-                "https://wsm.sun-asterisk.vn/vi"
+                "https://wsm.sun-asterisk.vn/vi",
+                "https://wsm.sun-asterisk.vn/users/sign_in",
+                "https://wsm.sun-asterisk.vn/en/users/sign_in",
+                "https://wsm.sun-asterisk.vn/ja/users/sign_in",
+                "https://wsm.sun-asterisk.vn/vi/users/sign_in"
             ],
             "js": ["axios.js", "login.js"]
         },

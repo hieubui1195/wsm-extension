@@ -11,9 +11,11 @@
         const form = document.getElementById('devise-login-form');
         document.querySelector('.loading-ajax').style.display = 'block';
 
-        const { data: { message, success } } = await axios.post(form.action, new FormData(form));
+        const { data: { message, success, link_redirect } } = await axios.post(form.action, new FormData(form));
+
         if (success) {
-            window.location.href = 'https://wsm.sun-asterisk.vn/dashboard/user_timesheets';
+            const next = link_redirect || 'https://wsm.sun-asterisk.vn/dashboard/user_timesheets';
+            window.location.href = next;
         } else {
             document.querySelector('.loading-ajax').style.display = 'none';
             document.querySelector('.login-error').style.display = 'block';
