@@ -110,16 +110,32 @@
         },
     ];
 
+    const getQuestionFromAPI = async () => {
+        try {
+            const questionResponse = await axios.get('https://fitm.sun-asterisk.vn//core_values/questions/random_question?language=vi');
+            const questionData = questionResponse.data.data;
+            const questionContent = questionData.question.content;
+            const answerContents = data.find(item => item.question_content == questionContent) ? data.find(item => item.question_content == questionContent).answer_contents : null;
+
+            return {
+                questionData,
+                answerContents
+            }
+        } catch (e) {
+            console.error(e);
+        }
+      };
+
     document.getElementById('wsm-login-button').onclick = async (event) => {
         event.preventDefault();
-        const questionResponse = await axios.get('https://fitm.sun-asterisk.vn//core_values/questions/random_question?language=vi');
-        const questionData = questionResponse.data.data;
-        const { question_token } = questionData.question;
-        const questionContent = questionData.question.content;
-        const answerContents = data.find(item => item.question_content == questionContent) ? data.find(item => item.question_content == questionContent).answer_contents : null;
-        if (!answerContents) console.log('Tu lam di');
+        let dataFromAPI = null;
 
-        const answer_tokens = questionData.answers.filter(item => answerContents.includes(item.content)).map(answer => answer.answer_token);
+        while (!dataFromAPI || (dataFromAPI.hasOwnProperty('answerContents') && !dataFromAPI.answerContents)) {
+            dataFromAPI = await getQuestionFromAPI();
+        }
+
+        const { question_token } = dataFromAPI.questionData.question;
+        const answer_tokens = dataFromAPI.questionData.answers.filter(item => dataFromAPI.answerContents.includes(item.content)).map(answer => answer.answer_token);
 
         const { data: resp } = await axios.post('https://fitm.sun-asterisk.vn//core_values/questions/valid_answer', {
             question_token,
